@@ -1,16 +1,3 @@
-def separador(permisosUser,permisosGroup,permisosOther):
-    for l in permisosUser:
-        letrasUser = [letra for letra in permisosUser]
-        print(letrasUser)
-    for m in permisosGroup:
-        letrasGroup = [letra for letra in permisosGroup]
-        print(letrasGroup)
-    for n in permisosOther:
-        letrasOther = [letra for letra in permisosOther]
-        print(letrasOther)
-    return letrasUser,letrasGroup,letrasOther
-
-
 
 def main():
     print("|       rwxrwxrwx |chmod_mate| rwxrwxrwx     |\n|cambiar permisos de archivos y directorios:)|")
