@@ -1,3 +1,13 @@
+def conversion(permisos):
+    valor = 0
+    if permisos[0] == 'r':
+        valor += 4
+    if permisos[1] == 'w':
+        valor += 2
+    if permisos[2] == 'x':
+        valor += 1
+    
+    return valor 
 
 def main():
     print("|       rwxrwxrwx |chmod_mate| rwxrwxrwx     |\n|cambiar permisos de archivos y directorios:)|")
@@ -28,7 +38,11 @@ def main():
             permisosOther = str(input("Introduzca los permisos de otros (others):" )).lower()
             if len(permisosOther) == 3:
                 noValido = False
-    return permisosUser,permisosGroup,permisosOther
+    octalUser = conversion(permisosUser)
+    octalGroup = conversion(permisosGroup)
+    octalOther = conversion(permisosOther)
+    octal = f'{octalUser}{octalGroup}{octalOther}'
+    return octal
 
 main()
 
