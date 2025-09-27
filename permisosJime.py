@@ -1,9 +1,12 @@
+#Función para validar la entrada del usuario
+
 def validar(cadena):
     valido = True
     if len(cadena) != 3:
         print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
         print("\n>>> Error, se espera una cadena de 3 caracteres <<<\n")
         return False
+    #Comparar caracteres si son diferentes de (r,w,x,-)
     if cadena[0] != "-" and cadena[0] != "r":
         print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
         print("Error. El caracter #1 no es un permiso válido\n")
@@ -26,7 +29,7 @@ def validar(cadena):
         print(">>> se esperaba 'w' o '-'")
         valido = False
     return valido
-
+#Convierte la entrada a su correspondiente en número octal
 def conversion(permisos):
     valor = 0
     if permisos[0] == 'r':
@@ -35,9 +38,8 @@ def conversion(permisos):
         valor += 2
     if permisos[2] == 'x':
         valor += 1
-    
     return valor 
-    
+#Función principal donde corre la lógica del programa
 def main():
     print("|        rwxrwxrwx |chmod_mate| rwxrwxrwx      |\n| CAMBIAR PERMISOS DE ARCHIVOS Y DIRECTORIOS:) |")
     print("-______________________________________________-")
@@ -60,6 +62,7 @@ def main():
         permisosOther = str(input("-> Introduzca los permisos de otros (others): ")).lower()
         if validar(permisosOther):
             break
+
     octalUser = conversion(permisosUser)
     octalGroup = conversion(permisosGroup)
     octalOther = conversion(permisosOther)
@@ -70,8 +73,8 @@ def main():
         recursivo = '-R'
     else:
         recursivo = ''
-    print(f'Su comando chmod es: chmod {octal} {recursivo} {nombreRutaODirectorio} ')
-    return octal,nombreRutaODirectorio,recursivo
+    #Salida del programa
+    print(f'Su comando chmod es: chmod  {octal} {recursivo} {nombreRutaODirectorio} ')
+    return octal,nombreRutaODirectorio,recursivo 
 
 main()
-
